@@ -1,0 +1,11 @@
+#!/bin/bash
+NAME=$1
+
+. bin/check-deps
+
+if [ "$NAME" = "" ]; then echo "\$NAME is required" 1>&2 ; exit 1; fi
+
+chalice new-project "${NAME}"
+echo "Makefile" >> "$(pwd)/${NAME}/.gitignore"
+echo "dist" >> "$(pwd)/${NAME}/.gitignore"
+echo "-r ../requirements.txt" > "$(pwd)/${NAME}/requirements.txt"

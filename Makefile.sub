@@ -1,0 +1,3 @@
+# auto generated
+package:
+	chalice package dist --pkg-format terraform

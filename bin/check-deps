@@ -1,0 +1,7 @@
+hash chalice
+hash terraform
+
+if ! terraform version | grep "v0.12.*" -q; then
+  >&2 echo "Terraform version 0.12.* required"
+  exit 1
+fi

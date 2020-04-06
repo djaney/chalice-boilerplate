@@ -1,0 +1,13 @@
+#!/bin/bash
+FILE=infra/chalice-modules.tf
+echo "" > $FILE
+for d in "$@"; do
+cat >> $FILE <<- EOM
+module "chalice_$d" {
+  source = "../$d/dist"
+  providers = {
+    aws = aws.main
+  }
+}
+EOM
+done
